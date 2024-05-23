@@ -42,6 +42,7 @@ public class Vendita extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String fix;
 		ProductBean product = new ProductBean();
 		product.setEmail((String) request.getSession().getAttribute("email"));
 		
@@ -60,22 +61,28 @@ public class Vendita extends HttpServlet {
 		                }
 		                else {
 		                	if (item.getFieldName().compareTo("nome") == 0) {
-		                		product.setNome(item.getString());
+		                		fix = item.getString().replaceAll(item.getString(),"");
+		                		product.setNome(fix);
 		                	}
 		                	else if (item.getFieldName().compareTo("prezzo") == 0) {
-		                		product.setPrezzo(Double.parseDouble(item.getString()));
+		                		fix = item.getString().replaceAll(item.getString(),"");
+		                		product.setPrezzo(Double.parseDouble(fix));
 		                	}
 		                	else if (item.getFieldName().compareTo("spedizione") == 0) {
-		                		product.setSpedizione(Double.parseDouble(item.getString()));
+		                		fix = item.getString().replaceAll(item.getString(),"");
+		                		product.setSpedizione(Double.parseDouble(fix));
 		                	}
 		                	else if (item.getFieldName().compareTo("tipologia") == 0) {
-		                		product.setTipologia(item.getString());
+		                		fix = item.getString().replaceAll(item.getString(),"");
+		                		product.setTipologia(fix);
 		                	}
 							else if (item.getFieldName().compareTo("tag") == 0) {
-								product.setTag(item.getString());
+								fix = item.getString().replaceAll(item.getString(),"");
+								product.setTag(fix);
 							}
 							else if (item.getFieldName().compareTo("descrizione") == 0) {
-		                		product.setDescrizione(item.getString());
+								fix = item.getString().replaceAll(item.getString(),"");
+								product.setDescrizione(fix);
 		                	}
 		                }
 		            }
